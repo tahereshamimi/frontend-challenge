@@ -9,9 +9,10 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    marginTop: "10vh",
   },
   jumborton: {
-    height: 300,
+    height: 350,
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -23,17 +24,20 @@ const useStyles = createUseStyles({
     },
   },
 });
+interface Props {
+  children: React.ReactNode;
+}
 
-export const HomePage = () => {
+const Container = ({ children }: Props) => {
   const styles = useStyles();
   return (
-    <>
-      <h1>welcome</h1>
-      <Link to="sign-up-first">
-        <Button variant="info" size="lg" block>
-          Sign Up
-        </Button>
-      </Link>
-    </>
+    <Row>
+      <Col md={{ span: 6, offset: 3 }}>
+        <div className={styles.container}>
+          <Jumbotron className={styles.jumborton}>{children}</Jumbotron>
+        </div>
+      </Col>
+    </Row>
   );
 };
+export { Container };
